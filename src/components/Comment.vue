@@ -15,7 +15,7 @@
       </router-link>
       <span class="date-posted">{{ comment.createdAt | date }}</span>
       <span v-if="isCurrentUser" class="mod-options">
-        <i class="ion-trash-a" v-on:click="destroy(slug, comment.id);"></i>
+        <i class="ion-trash-a" v-on:click="destroy(slug, comment.id)"></i>
       </span>
     </div>
   </div>
@@ -23,7 +23,6 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { COMMENT_DESTROY } from "@/store/actions.type";
 
 export default {
   name: "RwvComment",
@@ -42,7 +41,7 @@ export default {
   },
   methods: {
     destroy(slug, commentId) {
-      this.$store.dispatch(COMMENT_DESTROY, { slug, commentId });
+      this.$store.commit("COMMENT_DESTROY", { slug, commentId });
     }
   }
 };

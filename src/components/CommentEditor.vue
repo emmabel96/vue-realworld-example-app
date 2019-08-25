@@ -3,7 +3,7 @@
     <rwv-list-errors :errors="errors"> </rwv-list-errors>
     <form
       class="card comment-form"
-      v-on:submit.prevent="onSubmit(slug, comment);"
+      v-on:submit.prevent="onSubmit(slug, comment)"
     >
       <div class="card-block">
         <textarea
@@ -24,7 +24,6 @@
 
 <script>
 import RwvListErrors from "@/components/ListErrors";
-import { COMMENT_CREATE } from "@/store/actions.type";
 
 export default {
   name: "RwvCommentEditor",
@@ -43,7 +42,7 @@ export default {
   methods: {
     onSubmit(slug, comment) {
       this.$store
-        .dispatch(COMMENT_CREATE, { slug, comment })
+        .commit("COMMENT_CREATE", { slug, comment })
         .then(() => {
           this.comment = null;
           this.errors = {};

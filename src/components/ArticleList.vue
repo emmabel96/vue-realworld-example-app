@@ -19,7 +19,6 @@
 import { mapGetters } from "vuex";
 import RwvArticlePreview from "./VArticlePreview";
 import VPagination from "./VPagination";
-import { FETCH_ARTICLES } from "../store/actions.type";
 
 export default {
   name: "RwvArticleList",
@@ -114,7 +113,7 @@ export default {
   },
   methods: {
     fetchArticles() {
-      this.$store.dispatch(FETCH_ARTICLES, this.listConfig);
+      this.$store.commit("FETCH_ARTICLES", this.listConfig);
     },
     resetPagination() {
       this.listConfig.offset = 0;
